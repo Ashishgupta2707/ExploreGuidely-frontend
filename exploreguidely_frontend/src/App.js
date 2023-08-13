@@ -1,22 +1,32 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Users from "./user/pages/User";
-import NewPlace from "./Places/pages/NewPlaces";
-import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom';
+
+import Users from './user/pages/Users';
+import NewPlace from './Places/pages/NewPlace';
+import UserPlaces from './Places/pages/UserPlaces';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
 
 const App = () => {
   return (
     <Router>
-      <MainNavigation/>
+      <MainNavigation />
       <main>
         <Switch>
           <Route path="/" exact>
             <Users />
           </Route>
+          <Route path="/:userId/places" exact>
+            <UserPlaces/>
+          </Route>
           <Route path="/places/new" exact>
             <NewPlace />
           </Route>
-          <Redirect to="/"/>
+          <Redirect to="/" />
         </Switch>
       </main>
     </Router>
